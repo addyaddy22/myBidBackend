@@ -24,14 +24,14 @@ const db = mysql2.createConnection({
   user: "admire",
   host: "localhost",
   password: "admire123",
-  database: "employeeSys",
+  database: "myBid",
 });
 
 //
 //Upload image
 const stor = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/home/admire/Vs/REACT/D_workspace/reAcT/spin/src/images')
+    cb(null, '/home/admire/Vs/REACT/D_workspace/reAcT/spin/public/images')
   },
 
   filename: function (req, file, cb) {

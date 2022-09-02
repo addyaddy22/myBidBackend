@@ -21,10 +21,10 @@ var admin = [{
 
 //DB connection
 const db = mysql2.createConnection({
-  user: "admire",
-  host: "localhost",
-  password: "admire123",
-  database: "myBid",
+  user: "sql8516864",
+  host: "sql8.freesqldatabase.com",
+  password: "AXhRLKHiWu",
+  database: "sql8516864",
 });
 
 //

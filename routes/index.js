@@ -246,18 +246,18 @@ router.post('/bidding/create', function (req, res, next) {
     }
   })
 
-  const sqlInsert = "INSERT INTO bidding (user,product_id, amount) VALUES (?,?,?)"
-  db.query(sqlInsert, ['reg1', 1, 700], (err, result) => {
-    if (err) {
-      console.log(err)
-    }
-    else {
-      console.log(result)
-      res.status(200).send({
-        message: result
-      })
-    }
-  })
+  // const sqlInsert = "INSERT INTO bidding (user,product_id, amount) VALUES (?,?,?)"
+  // db.query(sqlInsert, ['reg1', 1, 700], (err, result) => {
+  //   if (err) {
+  //     console.log(err)
+  //   }
+  //   else {
+  //     console.log(result)
+  //     res.status(200).send({
+  //       message: result
+  //     })
+  //   }
+  // })
 
 })
 
@@ -302,6 +302,29 @@ router.get("/bidding/:id", (req, res, next) => {
 
 
 })
+
+//Auto bidding
+router.post('/autobidding', function (req, res, next) {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Origin", "*");
+  const product_id = req.body.id
+  const amount = req.body.price
+  console.log(req.body)
+  console.log(amount)
+  console.log(product_id)
+  db.query("SELECT * FROM bidding   ORDER BY bid_id DESC   LIMIT 1", product_id, (err, result) => {
+    if (err) {
+      console.log(err)
+    }
+    else {
+      console.log(result)
+      console.log(amount)
+      console.log(result[0].amount)
+
+    }
+  })
+})
+
 
 module.exports = router;
 
